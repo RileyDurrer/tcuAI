@@ -3,11 +3,15 @@ import controller as c
 
 # Function to be called when the button is clicked
 def createNewNode():
-    pass
+    print("attempt")
+    c.createNode
+    print("attempted")
+    output.set(c.output)
 
 def search():
-    output.set(c.Output)
-    pass
+    c.search(toSearch, selectedSearch)
+    output.set(c.output)
+    
 
 # Create the root window
 root = tk.Tk()
@@ -53,7 +57,7 @@ searchEntryL.pack()  # Pack the label into the root window
 #creates a textbox for searched node
 toSearch = tk.StringVar(root)
 searchEntry = tk.Entry(root, textvariable=toSearch, background='white')
-dataEntry.pack(padx=10, pady=10, fill='x', expand=True)
+searchEntry.pack(padx=10, pady=10, fill='x', expand=True)
 
 # Create a label to prompt search type
 searchEntryL = tk.Label(root, text="select search type")
