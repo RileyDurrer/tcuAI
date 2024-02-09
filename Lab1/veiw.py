@@ -67,12 +67,12 @@ searchEntryL = tk.Label(root, text="select search type")
 searchEntryL.pack()  # Pack the label into the root window
 
 # search type Dropdown Menu Setup
-searchOptions = ["BFS","DFS","IDS"]
+searchOptions = ["BFS", "DFS","IDS"]
 selectedSearch = tk.StringVar(root)
 selectedSearch.set(searchOptions[0])  # Set default value
 
 # Create a dropdown menu for selecting a search type
-searchSelection = tk.OptionMenu(root, selectedSearch, searchOptions)
+searchSelection = tk.OptionMenu(root, selectedSearch, *searchOptions)
 searchSelection.pack()  # Pack the dropdown into the root window
 
 # Create a button that creates a new node
