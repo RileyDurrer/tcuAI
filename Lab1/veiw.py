@@ -3,7 +3,6 @@ import controller as c
 
 # Function to be called when the button is clicked
 def createNewNode():
-    print("attempt")
     outputL.config(text=c.createNode(newNodeData.get(), selectedParent.get()))
     #code from chat GPT bellow
     menu = parentSelection['menu']

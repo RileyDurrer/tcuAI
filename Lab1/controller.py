@@ -4,7 +4,7 @@ root = model.root.data
 path=model.path
 
 nodes =[root]
-output=""
+
 
 def search(target, type):
     if (type=="BFS"):
@@ -23,9 +23,9 @@ def search(target, type):
         else:
             output= f"{target} doesn't exist"
     output= "Path ="
-    for node in path:
-        output=output+" "+ node.data +"-->"
-    output=output+" finish"
+    for nodes in path:
+        output=output+" "+ nodes.data +"-->"
+    return output+" finish"
     
         
 

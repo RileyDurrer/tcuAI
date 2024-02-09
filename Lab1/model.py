@@ -8,7 +8,7 @@ class node:
     def addChild(self, child):
       self.children.append(child)
       
-global root 
+
 root = node("0")
 path=[]
 
@@ -18,8 +18,9 @@ def addNode(data, parent):
     print("test")
     return False
   if (BFS(parent)):
-    path[-1].addChild(data)
+    path[-1].addChild(node(data))
     print("added")
+    print(path)
     return True
   else:
     print("couldn't find parent")
@@ -27,21 +28,30 @@ def addNode(data, parent):
 
   
 def BFS(target):
-  
-  def rBFS(node, target):
-    path.append(node)
-    if(node.data==target):
-      return True
-    for child in node.children:
-      q.put(child)
-    if (q.empty):
-      return False
-    else:
-      return rBFS(q.get(), target)
-  path=[]
+  path.clear()
+  # Initialize a queue and add the root node to it
   q = Queue()
-  print(path)
-  return rBFS(root, target)
+  q.put(root)
+    
+    # Iterate as long as the queue is not empty
+  while not q.empty():
+    # Get the next node from the queue
+    currentNode = q.get()
+    path.append(currentNode)
+    print(currentNode.data+"on path")
+        
+    # Check if this is the target node
+    if currentNode.data == target:     
+      print(f"Found: {currentNode.data}")
+      return True
+        
+      # Otherwise, add its children to the queue for further searching
+    for child in currentNode.children:
+      q.put(child)
+    
+  # If we reach this point, the target was not found
+  print("Target not found.")
+  return False
     
 
 def DFS(target):
