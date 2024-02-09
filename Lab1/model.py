@@ -9,12 +9,13 @@ class node:
       self.children.append(child)
       
 global root 
-root = node(0)
+root = node("0")
 path=[]
 
 
 def addNode(data, parent):
   if (BFS(data)):
+    print("test")
     return False
   if (BFS(parent)):
     path[-1].addChild(data)
@@ -22,7 +23,7 @@ def addNode(data, parent):
     return True
   else:
     print("couldn't find parent")
-    return
+    return False
 
   
 def BFS(target):
@@ -36,9 +37,10 @@ def BFS(target):
     if (q.empty):
       return False
     else:
-      return rBFS(q.get, target)
+      return rBFS(q.get(), target)
   path=[]
-  q = Queue
+  q = Queue()
+  print(path)
   return rBFS(root, target)
     
 

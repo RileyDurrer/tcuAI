@@ -31,8 +31,9 @@ def search(target, type):
 
 def createNode(value, parent):
     print("attempt to add")
-    if(model.addNode):
-        output=f"{value} added"
+    if(model.addNode(value, parent)):
+        
         nodes.append(value)
+        return f"{value} added under {parent}"
     else:
-        output=f"{value} already exists"
+        return f"{value} already exists"
