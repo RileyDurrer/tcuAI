@@ -1,1 +1,1 @@
-A simple model to add nodes to a tree and search for them in 3 different ways
+All my labs from my Artificial Intelligence course at TCU
