@@ -16,7 +16,7 @@ class Agent:
         self.z= z
         value= self.score()
     
-    def reproduce(self):
+    def reproduce(self, mate):
         Agent
         pass
     
@@ -55,3 +55,5 @@ def initialize():
 def selection(agents):
     sortedAgents=sorted(agents, key=getValue, reverse=True)
     return sortedAgents[:50]
+
+def reproduceGen

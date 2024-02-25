@@ -4,10 +4,14 @@ def runGenerations(generations):
     bestOfGen=[]
     currentGen = GAModel.initialize()
     for i in range (1, generations):
-        currentGen=nextGen(currentGen)
+        selectedGen = GAModel.selection(currentGen)
+        bestOfGen.append(selectedGen[1])
+        currentGen = GAModel.reproduceGen(selectedGen)
+
     
     return 
 
-def nextGen(currentGen):
-    selectedGen = GAModel.selection(currentGen)
+def nextGen(parentGen):
     
+
+    return childGen()
