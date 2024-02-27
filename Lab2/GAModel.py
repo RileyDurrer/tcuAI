@@ -1,11 +1,14 @@
 import random
+import numpy as np
 
 #number 0-10 that control how strong a mutation can be
 mutationStDev = 1
 #how far x y or z can go in either direction
 geneRange= 100
 population=100
-
+#determans how likliy the first agent is to be picked for reproduction (the lower the more diverse the next generation will be)
+probability=.01
+elitism = 0
 
 
 
@@ -14,13 +17,13 @@ class Agent:
         self.x= x
         self.y= y
         self.z= z
-        value= self.score()
+        self.value= self.score()
     
-    def reproduce(self, mate):
-        Agent
-        pass
-    
-    
+    def reproduce(self):
+        x=self.mutate(self.x)
+        y=self.mutate(self.y)
+        z=self.mutate(self.z)
+        return Agent(x,y,z)
     
     
     @staticmethod
@@ -38,22 +41,33 @@ class Agent:
         b = 4
         c = 1/4
         #the algorithim
-        return (a* self.x**2 + b * self.y**2 + c * self.z**2)
-
+        return -(100 * (self.y - self.x**2)**2 + (1 - self.x)**2 + 100 * (self.z - self.y**2)**2)
+    
 #Grabs the value of a given agent, used for sorting key    
-def getValue(agent):
-        return agent.value
+def getValue(Agent):
+        return Agent.value
 
 
 def initialize():
     agents=[]
-    for index in population:
-      index=agent(random.uniform(-1, 1)*geneRange, random.uniform(-1, 1)*geneRange, random.uniform(-1, 1)*geneRange) 
-      agents.append(index)
+    for agent in range(population):
+      agent=Agent(random.uniform(-1, 1)*geneRange,
+                  random.uniform(-1, 1)*geneRange,
+                  random.uniform(-1, 1)*geneRange) 
+      agents.append(agent)
+   
     return agents
 
 def selection(agents):
-    sortedAgents=sorted(agents, key=getValue, reverse=True)
-    return sortedAgents[:50]
+    sortedAgents = sorted(agents, key=lambda Agent: Agent.value, reverse=True)
+    return sortedAgents
 
-def reproduceGen
+def reproduceGen(parents):
+    nextGen=parents[0:elitism]
+    while (len(nextGen)<population):
+        for parent in parents:
+            if (random.random() < probability):
+                nextGen.append(parent.reproduce())
+                break
+    return nextGen
+        

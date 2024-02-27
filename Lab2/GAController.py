@@ -1,17 +1,18 @@
 import GAModel
 generations=100
-def runGenerations(generations):
+def runGenerations():
     bestOfGen=[]
     currentGen = GAModel.initialize()
-    for i in range (1, generations):
+    for i in range (0, generations):
         selectedGen = GAModel.selection(currentGen)
         bestOfGen.append(selectedGen[1])
         currentGen = GAModel.reproduceGen(selectedGen)
-
     
-    return 
-
-def nextGen(parentGen):
+    output = "Best of Each Generation: \n"
+    i=1
+    for agent in bestOfGen:
+        output=output+f"Gen {i}: {round(GAModel.getValue(agent))}\n"
+        i = i + 1
     
+    return output
 
-    return childGen()
